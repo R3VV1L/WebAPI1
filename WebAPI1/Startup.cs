@@ -30,10 +30,10 @@ namespace WebAPI1
         {
             services.AddControllers();
             services.AddDbContext<TodoContext>(opt => opt.UseInMemoryDatabase("Todolist")); //Указывает, что контекст базы данных будет использовать базу данных в памяти.
-            /* services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(c =>
              {
                  c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI1", Version = "v1" });
-             });*/
+             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,14 +42,14 @@ namespace WebAPI1
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                /*app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI1 v1"));*/
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI1 v1"));
             }
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
